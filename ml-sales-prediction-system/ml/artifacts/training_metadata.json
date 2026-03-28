@@ -1,0 +1,30 @@
+{
+  "version": "1.0.0",
+  "algorithm": "GradientBoostingRegressor",
+  "trained_at": "2026-03-28T05:28:46.101508+00:00",
+  "training_samples": 4000,
+  "test_samples": 1000,
+  "n_features": 30,
+  "hyperparameters": {
+    "n_estimators": 200,
+    "max_depth": 6,
+    "learning_rate": 0.1,
+    "min_samples_split": 5,
+    "min_samples_leaf": 3,
+    "subsample": 0.85
+  },
+  "metrics": {
+    "train": {
+      "r2": 0.9613672302959068,
+      "rmse": 12740.979158957221,
+      "mae": 9939.548863990705
+    },
+    "test": {
+      "r2": 0.8527929133610561,
+      "rmse": 25199.086431283697,
+      "mae": 19721.031867172314
+    },
+    "cv_r2_mean": 0.8201313016811149,
+    "cv_r2_std": 0.014942248340872051
+  }
+}

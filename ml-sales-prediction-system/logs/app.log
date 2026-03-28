@@ -1,0 +1,21 @@
+[2026-03-28 10:53:17] INFO     | app                       | setup_logging        | Logging configured [level=DEBUG, dir=C:\Users\sai_s\OneDrive\Attachments\Desktop\FULLSTACK\ml-sales-prediction-system\logs]
+[2026-03-28 10:53:19] INFO     | app.services.prediction_service | load_model           | ML model loaded successfully [version=1.0.0]
+[2026-03-28 10:53:19] INFO     | app                       | create_app           | Sales Prediction Application initialized successfully
+[2026-03-28 10:53:20] INFO     | app                       | setup_logging        | Logging configured [level=DEBUG, dir=C:\Users\sai_s\OneDrive\Attachments\Desktop\FULLSTACK\ml-sales-prediction-system\logs]
+[2026-03-28 10:53:21] INFO     | app.services.prediction_service | load_model           | ML model loaded successfully [version=1.0.0]
+[2026-03-28 10:53:21] INFO     | app                       | create_app           | Sales Prediction Application initialized successfully
+[2026-03-28 10:56:05] INFO     | app                       | setup_logging        | Logging configured [level=DEBUG, dir=C:\Users\sai_s\OneDrive\Attachments\Desktop\FULLSTACK\ml-sales-prediction-system\logs]
+[2026-03-28 10:56:09] INFO     | app.services.prediction_service | load_model           | ML model loaded successfully [version=1.0.0]
+[2026-03-28 10:56:09] INFO     | app                       | create_app           | Sales Prediction Application initialized successfully
+[2026-03-28 10:56:19] INFO     | app                       | setup_logging        | Logging configured [level=DEBUG, dir=C:\Users\sai_s\OneDrive\Attachments\Desktop\FULLSTACK\ml-sales-prediction-system\logs]
+[2026-03-28 10:56:23] INFO     | app.services.prediction_service | load_model           | ML model loaded successfully [version=1.0.0]
+[2026-03-28 10:56:23] INFO     | app                       | create_app           | Sales Prediction Application initialized successfully
+[2026-03-28 10:56:30] INFO     | app                       | setup_logging        | Logging configured [level=DEBUG, dir=C:\Users\sai_s\OneDrive\Attachments\Desktop\FULLSTACK\ml-sales-prediction-system\logs]
+[2026-03-28 10:56:33] INFO     | app.services.prediction_service | load_model           | ML model loaded successfully [version=1.0.0]
+[2026-03-28 10:56:33] INFO     | app                       | create_app           | Sales Prediction Application initialized successfully
+[2026-03-28 10:59:15] INFO     | app                       | setup_logging        | Logging configured [level=DEBUG, dir=C:\Users\sai_s\OneDrive\Attachments\Desktop\FULLSTACK\ml-sales-prediction-system\logs]
+[2026-03-28 10:59:17] INFO     | app.services.prediction_service | load_model           | ML model loaded successfully [version=1.0.0]
+[2026-03-28 10:59:17] INFO     | app                       | create_app           | Sales Prediction Application initialized successfully
+[2026-03-28 10:59:17] INFO     | app                       | setup_logging        | Logging configured [level=DEBUG, dir=C:\Users\sai_s\OneDrive\Attachments\Desktop\FULLSTACK\ml-sales-prediction-system\logs]
+[2026-03-28 10:59:19] INFO     | app.services.prediction_service | load_model           | ML model loaded successfully [version=1.0.0]
+[2026-03-28 10:59:19] INFO     | app                       | create_app           | Sales Prediction Application initialized successfully

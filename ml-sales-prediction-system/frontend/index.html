@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Enterprise-grade ML-powered Sales Prediction System with real-time analytics and interactive dashboard.">
+    <meta name="keywords" content="sales prediction, machine learning, AI, analytics, forecasting">
+    <title>SalesCast AI — Intelligent Sales Prediction Engine</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@0.294.0/dist/umd/lucide.js"></script>
+
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+    <!-- Video Background -->
+    <div class="video-bg">
+        <video autoplay muted loop playsinline id="bgVideo">
+            <source src="https://assets.mixkit.co/videos/preview/mixkit-digital-animation-of-futuristic-devices-99786-large.mp4" type="video/mp4">
+        </video>
+        <div class="video-overlay"></div>
+    </div>
+
+    <!-- Floating Particles -->
+    <div class="particles" id="particles"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-brand">
+            <div class="brand-icon">
+                <i data-lucide="bar-chart-3"></i>
+            </div>
+            <div class="brand-text">
+                <span class="brand-name">SalesCast</span>
+                <span class="brand-tag">AI</span>
+            </div>
+        </div>
+        <div class="nav-links">
+            <a href="#prediction" class="nav-link active" data-section="prediction">
+                <i data-lucide="brain"></i>
+                <span>Predict</span>
+            </a>
+            <a href="#dashboard" class="nav-link" data-section="dashboard">
+                <i data-lucide="layout-dashboard"></i>
+                <span>Dashboard</span>
+            </a>
+            <a href="#history" class="nav-link" data-section="history">
+                <i data-lucide="history"></i>
+                <span>History</span>
+            </a>
+            <a href="/docs" class="nav-link" target="_blank">
+                <i data-lucide="file-code-2"></i>
+                <span>API Docs</span>
+            </a>
+        </div>
+        <div class="nav-status" id="navStatus">
+            <div class="status-dot"></div>
+            <span>System Online</span>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+
+        <!-- Hero Section -->
+        <section class="hero" id="hero">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <i data-lucide="sparkles"></i>
+                    <span>Powered by Machine Learning</span>
+                </div>
+                <h1 class="hero-title">
+                    Predict Sales with
+                    <span class="gradient-text">AI Precision</span>
+                </h1>
+                <p class="hero-subtitle">
+                    Enterprise-grade sales forecasting engine powered by Gradient Boosting. 
+                    Input your product and outlet data to get instant, accurate predictions.
+                </p>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <span class="stat-value" id="statAccuracy">95.2%</span>
+                        <span class="stat-label">Model Accuracy</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-value" id="statPredictions">0</span>
+                        <span class="stat-label">Predictions Made</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-value" id="statLatency">&lt;50ms</span>
+                        <span class="stat-label">Avg Latency</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Prediction Section -->
+        <section class="section" id="prediction">
+            <div class="section-header">
+                <h2 class="section-title">
+                    <i data-lucide="brain"></i>
+                    Sales Prediction Engine
+                </h2>
+                <p class="section-desc">Enter product and outlet details to generate an AI-powered sales forecast</p>
+            </div>
+
+            <div class="prediction-grid">
+                <!-- Input Form -->
+                <div class="glass-card form-card">
+                    <div class="card-header">
+                        <div class="card-icon blue">
+                            <i data-lucide="sliders-horizontal"></i>
+                        </div>
+                        <div>
+                            <h3>Input Parameters</h3>
+                            <p>Configure prediction variables</p>
+                        </div>
+                    </div>
+
+                    <form id="predictionForm" class="prediction-form">
+                        <div class="form-section">
+                            <h4 class="form-section-title">
+                                <i data-lucide="package"></i>
+                                Product Details
+                            </h4>
+                            <div class="form-grid">
+                                <div class="form-group" id="group-item-weight">
+                                    <label for="item_weight">Item Weight (kg)</label>
+                                    <div class="input-wrapper">
+                                        <i data-lucide="weight"></i>
+                                        <input type="number" id="item_weight" name="item_weight" 
+                                               min="0.1" max="50" step="0.1" value="12.5" required>
+                                    </div>
+                                    <span class="input-hint">Range: 0.1 – 50.0 kg</span>
+                                </div>
+
+                                <div class="form-group" id="group-item-visibility">
+                                    <label for="item_visibility">Display Visibility</label>
+                                    <div class="input-wrapper">
+                                        <i data-lucide="eye"></i>
+                                        <input type="number" id="item_visibility" name="item_visibility" 
+                                               min="0" max="0.35" step="0.001" value="0.05" required>
+                                    </div>
+                                    <span class="input-hint">Range: 0.0 – 0.35</span>
+                                </div>
+
+                                <div class="form-group" id="group-item-mrp">
+                                    <label for="item_mrp">Item MRP (₹)</label>
+                                    <div class="input-wrapper">
+                                        <i data-lucide="indian-rupee"></i>
+                                        <input type="number" id="item_mrp" name="item_mrp" 
+                                               min="10" max="20000" step="1" value="1500" required>
+                                    </div>
+                                    <span class="input-hint">Range: ₹10 – ₹20000</span>
+                                </div>
+
+                                <div class="form-group" id="group-item-type">
+                                    <label for="item_type">Item Category</label>
+                                    <div class="input-wrapper">
+                                        <i data-lucide="tag"></i>
+                                        <select id="item_type" name="item_type" required>
+                                            <option value="Dairy">Dairy</option>
+                                            <option value="Soft Drinks">Soft Drinks</option>
+                                            <option value="Meat">Meat</option>
+                                            <option value="Fruits and Vegetables">Fruits & Vegetables</option>
+                                            <option value="Household">Household</option>
+                                            <option value="Baking Goods">Baking Goods</option>
+                                            <option value="Snack Foods" selected>Snack Foods</option>
+                                            <option value="Frozen Foods">Frozen Foods</option>
+                                            <option value="Breakfast">Breakfast</option>
+                                            <option value="Health and Hygiene">Health & Hygiene</option>
+                                            <option value="Hard Drinks">Hard Drinks</option>
+                                            <option value="Canned">Canned</option>
+                                            <option value="Breads">Breads</option>
+                                            <option value="Starchy Foods">Starchy Foods</option>
+                                            <option value="Others">Others</option>
+                                            <option value="Seafood">Seafood</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-section">
+                            <h4 class="form-section-title">
+                                <i data-lucide="store"></i>
+                                Outlet Details
+                            </h4>
+                            <div class="form-grid">
+                                <div class="form-group" id="group-outlet-size">
+                                    <label for="outlet_size">Outlet Size</label>
+                                    <div class="input-wrapper">
+                                        <i data-lucide="maximize-2"></i>
+                                        <select id="outlet_size" name="outlet_size" required>
+                                            <option value="Small">Small</option>
+                                            <option value="Medium" selected>Medium</option>
+                                            <option value="High">High (Large)</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="form-group" id="group-outlet-location">
+                                    <label for="outlet_location_type">Location Tier</label>
+                                    <div class="input-wrapper">
+                                        <i data-lucide="map-pin"></i>
+                                        <select id="outlet_location_type" name="outlet_location_type" required>
+                                            <option value="Tier 1" selected>Tier 1 (Metro)</option>
+                                            <option value="Tier 2">Tier 2 (Urban)</option>
+                                            <option value="Tier 3">Tier 3 (Rural)</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="form-group" id="group-outlet-type">
+                                    <label for="outlet_type">Outlet Type</label>
+                                    <div class="input-wrapper">
+                                        <i data-lucide="building-2"></i>
+                                        <select id="outlet_type" name="outlet_type" required>
+                                            <option value="Grocery Store">Grocery Store</option>
+                                            <option value="Supermarket Type1" selected>Supermarket Type 1</option>
+                                            <option value="Supermarket Type2">Supermarket Type 2</option>
+                                            <option value="Supermarket Type3">Supermarket Type 3</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="form-group" id="group-outlet-year">
+                                    <label for="outlet_establishment_year">Established Year</label>
+                                    <div class="input-wrapper">
+                                        <i data-lucide="calendar"></i>
+                                        <input type="number" id="outlet_establishment_year" 
+                                               name="outlet_establishment_year" 
+                                               min="1980" max="2025" value="2005" required>
+                                    </div>
+                                    <span class="input-hint">Range: 1980 – 2025</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary" id="predictBtn">
+                                <i data-lucide="zap"></i>
+                                <span>Generate Prediction</span>
+                                <div class="btn-loader" id="btnLoader"></div>
+                            </button>
+                            <button type="reset" class="btn btn-ghost" id="resetBtn">
+                                <i data-lucide="rotate-ccw"></i>
+                                <span>Reset</span>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Result Card -->
+                <div class="result-area">
+                    <!-- Prediction Result -->
+                    <div class="glass-card result-card" id="resultCard">
+                        <div class="card-header">
+                            <div class="card-icon green">
+                                <i data-lucide="target"></i>
+                            </div>
+                            <div>
+                                <h3>Prediction Result</h3>
+                                <p>AI-generated sales forecast</p>
+                            </div>
+                        </div>
+
+                        <div class="result-placeholder" id="resultPlaceholder">
+                            <div class="placeholder-icon">
+                                <i data-lucide="brain-circuit"></i>
+                            </div>
+                            <p>Configure parameters and click <strong>Generate Prediction</strong> to see results</p>
+                        </div>
+
+                        <div class="result-content hidden" id="resultContent">
+                            <div class="result-main">
+                                <span class="result-label">Predicted Sales</span>
+                                <div class="result-value">
+                                    <span class="currency">₹</span>
+                                    <span id="predictionValue">0.00</span>
+                                </div>
+                            </div>
+
+                            <div class="result-metrics">
+                                <div class="metric-card">
+                                    <div class="metric-icon confidence">
+                                        <i data-lucide="shield-check"></i>
+                                    </div>
+                                    <div class="metric-info">
+                                        <span class="metric-value" id="confidenceValue">—</span>
+                                        <span class="metric-label">Confidence</span>
+                                    </div>
+                                </div>
+                                <div class="metric-card">
+                                    <div class="metric-icon latency">
+                                        <i data-lucide="timer"></i>
+                                    </div>
+                                    <div class="metric-info">
+                                        <span class="metric-value" id="latencyValue">—</span>
+                                        <span class="metric-label">Latency</span>
+                                    </div>
+                                </div>
+                                <div class="metric-card">
+                                    <div class="metric-icon version">
+                                        <i data-lucide="git-branch"></i>
+                                    </div>
+                                    <div class="metric-info">
+                                        <span class="metric-value" id="versionValue">—</span>
+                                        <span class="metric-label">Model Ver.</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="result-chart-container">
+                                <h4>Sales Prediction Breakdown</h4>
+                                <canvas id="predictionChart" height="200"></canvas>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Error Card -->
+                    <div class="glass-card error-card hidden" id="errorCard">
+                        <div class="error-icon">
+                            <i data-lucide="alert-triangle"></i>
+                        </div>
+                        <h4>Prediction Error</h4>
+                        <p id="errorMessage">Something went wrong. Please try again.</p>
+                        <button class="btn btn-ghost btn-sm" onclick="document.getElementById('errorCard').classList.add('hidden')">
+                            <i data-lucide="x"></i>
+                            Dismiss
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Dashboard Section -->
+        <section class="section hidden" id="dashboard">
+            <div class="section-header">
+                <h2 class="section-title">
+                    <i data-lucide="layout-dashboard"></i>
+                    Analytics Dashboard
+                </h2>
+                <p class="section-desc">Real-time analytics and model performance metrics</p>
+            </div>
+
+            <div class="dashboard-grid">
+                <div class="glass-card stat-card">
+                    <div class="stat-card-icon blue">
+                        <i data-lucide="bar-chart-2"></i>
+                    </div>
+                    <div class="stat-card-info">
+                        <span class="stat-card-value" id="dashTotalPred">0</span>
+                        <span class="stat-card-label">Total Predictions</span>
+                    </div>
+                </div>
+
+                <div class="glass-card stat-card">
+                    <div class="stat-card-icon green">
+                        <i data-lucide="trending-up"></i>
+                    </div>
+                    <div class="stat-card-info">
+                        <span class="stat-card-value" id="dashAvgSales">₹0</span>
+                        <span class="stat-card-label">Avg. Predicted Sales</span>
+                    </div>
+                </div>
+
+                <div class="glass-card stat-card">
+                    <div class="stat-card-icon purple">
+                        <i data-lucide="arrow-up-right"></i>
+                    </div>
+                    <div class="stat-card-info">
+                        <span class="stat-card-value" id="dashMaxSales">₹0</span>
+                        <span class="stat-card-label">Highest Prediction</span>
+                    </div>
+                </div>
+
+                <div class="glass-card stat-card">
+                    <div class="stat-card-icon orange">
+                        <i data-lucide="gauge"></i>
+                    </div>
+                    <div class="stat-card-info">
+                        <span class="stat-card-value" id="dashAvgConf">0%</span>
+                        <span class="stat-card-label">Avg. Confidence</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="charts-grid">
+                <div class="glass-card chart-card">
+                    <h4><i data-lucide="pie-chart"></i> Sales by Outlet Type</h4>
+                    <canvas id="outletChart" height="280"></canvas>
+                </div>
+                <div class="glass-card chart-card">
+                    <h4><i data-lucide="activity"></i> Prediction Trend</h4>
+                    <canvas id="trendChart" height="280"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <!-- History Section -->
+        <section class="section hidden" id="history">
+            <div class="section-header">
+                <h2 class="section-title">
+                    <i data-lucide="history"></i>
+                    Prediction History
+                </h2>
+                <p class="section-desc">Browse past predictions and analysis results</p>
+            </div>
+
+            <div class="glass-card">
+                <div class="table-container">
+                    <table class="data-table" id="historyTable">
+                        <thead>
+                            <tr>
+                                <th>Request ID</th>
+                                <th>Item Type</th>
+                                <th>Outlet Type</th>
+                                <th>MRP</th>
+                                <th>Predicted Sales</th>
+                                <th>Confidence</th>
+                                <th>Latency</th>
+                                <th>Time</th>
+                            </tr>
+                        </thead>
+                        <tbody id="historyBody">
+                            <tr class="empty-row">
+                                <td colspan="8">
+                                    <div class="empty-state">
+                                        <i data-lucide="inbox"></i>
+                                        <p>No predictions yet. Make your first prediction to see history.</p>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Toast Container -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <!-- Loading Overlay -->
+    <div class="loading-overlay hidden" id="loadingOverlay">
+        <div class="loader-ring">
+            <div class="loader-ring-inner"></div>
+        </div>
+        <p>Processing prediction...</p>
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 2026 SalesCast AI — Enterprise Sales Prediction System</p>
+    </footer>
+
+    <script src="/js/app.js"></script>
+</body>
+</html>
